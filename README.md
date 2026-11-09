@@ -36,6 +36,29 @@
 
 The continent and the Arabic labels are added in Power Query, so the report is fully in Arabic.
 
+
+## Data cleaning & preparation
+
+Data cleaning and preparation by **Fay Naif**. The cleaned file (`Natural_Disasters_Clean_1990_2025.csv`) was checked before building the report:
+
+| Check | Result |
+| --- | ---: |
+| Records | 23,418 |
+| Blank cells | 0 |
+| Duplicate records / duplicate `Disaster_ID` | 0 / 0 |
+| Invalid dates | 0 |
+| `Year` / `Month` not matching `Date` | 0 / 0 |
+| Negative deaths, people affected or losses | 0 |
+
+**Power Query steps** (full code in [`power-query/queries.pq`](power-query/queries.pq)): load the CSV through the `FilePath` parameter → clean the column names (remove the byte-order mark and spaces) → select the 10 columns → set data types → map each country to its continent → add Arabic names for continents, countries, disaster types and months.
+
+```powerquery
+Source = Table.TransformColumnNames(Source0, each Text.Trim(Text.Replace(_, "#(feff)", ""))),
+AddContinent = Table.AddColumn(Typed, "Continent", each Record.FieldOrDefault(ContinentMap, [Country], "Other"), type text),
+AddCountryAR = Table.AddColumn(AddContinentAR, "Country_AR", each Record.FieldOrDefault(CountryAR, [Country], [Country]), type text),
+AddMonthAR = Table.AddColumn(AddTypeAR, "Month_AR", each if [Month] >= 1 and [Month] <= 12 then MonthsAR{[Month] - 1} else null, type text)
+```
+
 ## Headline figures
 
 | KPI | Value |
@@ -77,6 +100,8 @@ Natural-Disasters-Dashboard/
 │   └── page-design/background_1920x1080.png          # page background
 ├── dax/
 │   └── DAX-measures.dax
+├── power-query/
+│   └── queries.pq
 ├── data/
 │   └── Natural_Disasters_Clean_AR.zip
 ├── screenshots/
