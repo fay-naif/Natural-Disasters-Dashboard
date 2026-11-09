@@ -9,6 +9,8 @@
   <img src="https://img.shields.io/badge/DAX-0b1730?style=for-the-badge&color=0b1730&labelColor=0b1730&logoColor=c9ced8" alt="DAX">
   <img src="https://img.shields.io/badge/Power%20Query-0b1730?style=for-the-badge&color=0b1730&labelColor=0b1730&logoColor=c9ced8" alt="Power Query">
   <img src="https://img.shields.io/badge/CSV-0b1730?style=for-the-badge&color=0b1730&labelColor=0b1730&logoColor=c9ced8" alt="CSV">
+  <img src="https://img.shields.io/badge/Python-0b1730?style=for-the-badge&color=0b1730&labelColor=0b1730&logoColor=c9ced8&logo=python" alt="Python">
+  <img src="https://img.shields.io/badge/SQL-0b1730?style=for-the-badge&color=0b1730&labelColor=0b1730&logoColor=c9ced8&logo=sqlite" alt="SQL">
 </p>
 
 <p align="center">
@@ -81,12 +83,32 @@ Total Disasters = COUNTROWS ( 'Disasters' )
 Affected Countries = DISTINCTCOUNT ( 'Disasters'[Country] )
 ```
 
+## Python &amp; SQL
+
+The data checks and the main analysis are also written in code, so they can be re-run outside Power BI:
+
+| File | What it does |
+| --- | --- |
+| [`python/data_cleaning.py`](python/data_cleaning.py) | Checks blanks, duplicates, dates, negative values and continent mapping, then prints the headline figures and totals by disaster type |
+| [`python/load_to_sqlite.py`](python/load_to_sqlite.py) | Loads the data into a SQLite database and runs every query in `sql/analysis.sql` |
+| [`sql/analysis.sql`](sql/analysis.sql) | 7 queries: KPIs, totals by type, share by continent, top 10 countries by deaths, yearly trend, most frequent type per continent (window function), busiest months |
+
+```bash
+pip install -r python/requirements.txt
+python python/data_cleaning.py
+python python/load_to_sqlite.py
+```
+
+The results match the figures in the dashboard.
+
 ## Tools
 
 - **Power BI Desktop** — report, semantic model, Azure Map visual and a custom dark theme
 - **DAX** — measures and formatted KPI text
 - **Power Query (M)** — continent mapping and Arabic labels
 - **Page design** — a 1920×1080 background image for the layout
+- **Python (pandas)** — data checks and preparation
+- **SQL (SQLite)** — analysis queries
 
 ## Project structure
 
@@ -102,6 +124,12 @@ Natural-Disasters-Dashboard/
 │   └── DAX-measures.dax
 ├── power-query/
 │   └── queries.pq
+├── python/
+│   ├── data_cleaning.py
+│   ├── load_to_sqlite.py
+│   └── requirements.txt
+├── sql/
+│   └── analysis.sql
 ├── data/
 │   └── Natural_Disasters_Clean_AR.zip
 ├── screenshots/

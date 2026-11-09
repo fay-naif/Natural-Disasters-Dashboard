@@ -45,9 +45,25 @@
 3. اضغطي **Home → Refresh**.
 4. لو الخريطة فاضية: File → Options → Security → فعّلي Map and Filled Map visuals ثم أعيدي الفتح.
 
+## Python و SQL
+
+فحوصات البيانات والتحليل الأساسي مكتوبة كمان بالكود، وتقدر تشتغل خارج Power BI:
+
+- `python/data_cleaning.py` — فحص جودة البيانات وتجهيزها
+- `python/load_to_sqlite.py` — تحميل البيانات في قاعدة SQLite وتشغيل استعلامات `sql/analysis.sql`
+- `sql/analysis.sql` — استعلامات التحليل
+
+```bash
+pip install -r python/requirements.txt
+python python/data_cleaning.py
+python python/load_to_sqlite.py
+```
+
+النتائج نفس أرقام الداشبورد.
+
 ## الأدوات
 
-Power BI Desktop · DAX · Power Query · Azure Map
+Power BI Desktop · DAX · Power Query · Azure Map · Python · SQL
 
 ---
 
