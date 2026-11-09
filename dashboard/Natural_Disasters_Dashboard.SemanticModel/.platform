@@ -1,0 +1,11 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "SemanticModel",
+    "displayName": "Natural_Disasters_Dashboard"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "5c1d9cc8-52b1-4184-b929-c9a4af0b068b"
+  }
+}

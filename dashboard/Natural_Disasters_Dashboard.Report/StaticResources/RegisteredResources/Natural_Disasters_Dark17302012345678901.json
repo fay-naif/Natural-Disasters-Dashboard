@@ -1,0 +1,173 @@
+{
+  "name": "Natural Disasters Dark",
+  "dataColors": [
+    "#2B9BFF",
+    "#2832B8",
+    "#E8743B",
+    "#E64C66",
+    "#7A4DD8",
+    "#D9B300",
+    "#12D6B5",
+    "#A64DFF",
+    "#6B8BFF",
+    "#118DFF",
+    "#E66C37",
+    "#6B007B"
+  ],
+  "background": "#030A22",
+  "foreground": "#FFFFFF",
+  "tableAccent": "#2448FF",
+  "foregroundNeutralSecondary": "#C9D1F0",
+  "foregroundNeutralTertiary": "#8B95BD",
+  "backgroundLight": "#0A1433",
+  "backgroundNeutral": "#1B2550",
+  "textClasses": {
+    "callout": {
+      "fontFace": "Segoe UI Bold",
+      "color": "#FFFFFF",
+      "fontSize": 22
+    },
+    "title": {
+      "fontFace": "Segoe UI Bold",
+      "color": "#FFFFFF",
+      "fontSize": 12
+    },
+    "header": {
+      "fontFace": "Segoe UI Bold",
+      "color": "#FFFFFF",
+      "fontSize": 12
+    },
+    "label": {
+      "fontFace": "Segoe UI",
+      "color": "#DDE3FF",
+      "fontSize": 10
+    }
+  },
+  "visualStyles": {
+    "*": {
+      "*": {
+        "background": [
+          {
+            "show": false,
+            "transparency": 100
+          }
+        ],
+        "border": [
+          {
+            "show": false
+          }
+        ],
+        "dropShadow": [
+          {
+            "show": false
+          }
+        ],
+        "visualHeader": [
+          {
+            "show": false
+          }
+        ],
+        "title": [
+          {
+            "fontColor": {
+              "solid": {
+                "color": "#FFFFFF"
+              }
+            },
+            "fontFamily": "Segoe UI Bold"
+          }
+        ],
+        "categoryAxis": [
+          {
+            "labelColor": {
+              "solid": {
+                "color": "#C9D1F0"
+              }
+            },
+            "gridlineShow": false,
+            "showAxisTitle": false
+          }
+        ],
+        "valueAxis": [
+          {
+            "labelColor": {
+              "solid": {
+                "color": "#C9D1F0"
+              }
+            },
+            "gridlineColor": {
+              "solid": {
+                "color": "#1B2550"
+              }
+            },
+            "showAxisTitle": false
+          }
+        ],
+        "legend": [
+          {
+            "labelColor": {
+              "solid": {
+                "color": "#E8ECFF"
+              }
+            }
+          }
+        ],
+        "labels": [
+          {
+            "color": {
+              "solid": {
+                "color": "#E8ECFF"
+              }
+            }
+          }
+        ]
+      }
+    },
+    "page": {
+      "*": {
+        "outspace": [
+          {
+            "color": {
+              "solid": {
+                "color": "#000510"
+              }
+            }
+          }
+        ],
+        "background": [
+          {
+            "color": {
+              "solid": {
+                "color": "#020617"
+              }
+            },
+            "transparency": 0
+          }
+        ]
+      }
+    },
+    "slicer": {
+      "*": {
+        "items": [
+          {
+            "fontColor": {
+              "solid": {
+                "color": "#FFFFFF"
+              }
+            },
+            "background": {
+              "solid": {
+                "color": "#060A1E"
+              }
+            }
+          }
+        ],
+        "header": [
+          {
+            "show": false
+          }
+        ]
+      }
+    }
+  }
+}

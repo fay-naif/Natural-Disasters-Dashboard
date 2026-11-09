@@ -1,0 +1,38 @@
+// Measures in the Disasters table
+
+Total Disasters =
+    COUNTROWS('Disasters')
+
+Total Deaths =
+    SUM('Disasters'[Deaths])
+
+Total Affected =
+    SUM('Disasters'[People_Affected])
+
+Economic Loss =
+    SUM('Disasters'[Economic_Loss_USD])
+
+Affected Countries =
+    DISTINCTCOUNT('Disasters'[Country])
+
+KPI Disasters =
+    VAR n = [Total Disasters]
+    RETURN IF(ISBLANK(n), "0", SUBSTITUTE(FORMAT(n, "#,0"), ",", "."))
+
+KPI Deaths =
+    VAR d = [Total Deaths]
+    RETURN SWITCH(TRUE(), ISBLANK(d), "0", d >= 1000000, FORMAT(d / 1000000, "0.00") & "M", d >= 1000, FORMAT(d / 1000, "0.0") & "K", FORMAT(d, "0"))
+
+KPI Economic Loss =
+    VAR v = [Economic Loss]
+    RETURN SWITCH(TRUE(), ISBLANK(v), "0", v >= 1000000000000, FORMAT(v / 1000000000000, "0.00") & " تريليون", v >= 1000000000, FORMAT(v / 1000000000, "0.00") & " مليار", v >= 1000000, FORMAT(v / 1000000, "0.00") & " مليون", FORMAT(v, "#,0"))
+
+KPI Affected =
+    VAR v = [Total Affected]
+    RETURN SWITCH(TRUE(), ISBLANK(v), "0", v >= 1000000000, FORMAT(v / 1000000000, "0.00") & " مليار", v >= 1000000, FORMAT(v / 1000000, "0.00") & " مليون", FORMAT(v, "#,0"))
+
+KPI Countries =
+    FORMAT(COALESCE([Affected Countries], 0), "0")
+
+Continent Color =
+    SWITCH(SELECTEDVALUE('Disasters'[Continent]), "Asia", "#E66C37", "North America", "#6B007B", "South America", "#12239E", "Africa", "#4A90F0", "Europe", "#197278", "Oceania", "#118DFF", "#9AA3B5")
